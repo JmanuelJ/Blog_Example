@@ -22,7 +22,9 @@ import androidx.navigation.compose.rememberNavController
 import com.juanma.blogmvvm.presentation.navigation.AppNavigation
 import com.juanma.blogmvvm.presentation.screens.login.LoginScreen
 import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     

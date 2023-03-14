@@ -23,17 +23,3 @@ fun LoginScreen(navController: NavHostController) {
         }
     )
 }
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    BlogMVVMTheme(darkTheme = true) {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            LoginScreen(rememberNavController())
-        }
-    }
-}

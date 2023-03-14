@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "kotlin-kapt"
+    id("com.google.dagger.hilt.android")
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -53,11 +56,20 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
+    //Navigation Compose
     implementation ("androidx.navigation:navigation-compose:2.5.3")
+    //Dagger Hil
+    implementation("com.google.dagger:hilt-android:2.44")
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-rc01'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+    kapt('com.google.dagger:hilt-android-compiler:2.44')
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+}
+kapt {
+    correctErrorTypes = true
 }

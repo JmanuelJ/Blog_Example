@@ -33,17 +33,3 @@ fun SignUpScreen(navController: NavHostController){
         bottomBar = {}
     )
 }
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PreviewSignupScreen(){
-    BlogMVVMTheme(darkTheme = true) {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            SignUpScreen(rememberNavController())
-        }
-    }
-}

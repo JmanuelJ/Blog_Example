@@ -9,6 +9,7 @@ import com.juanma.blogmvvm.presentation.screens.signUp.SignUpScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController){
+    
     NavHost(
         navController = navController,
         startDestination = AppScreen.Login.route

@@ -1,5 +1,6 @@
 package com.juanma.blogmvvm.presentation.screens.login.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,21 +19,24 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import com.juanma.blogmvvm.R
 import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
+import com.juanma.blogmvvm.presentation.screens.login.LoginViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
 import com.juanma.blogmvvm.presentation.ui.theme.Red500
 
 @Composable
-fun LoginContent(){
+fun LoginContent(viewModel: LoginViewModel = hiltViewModel()){
     Box(
         modifier = Modifier
             .fillMaxWidth()
     ){
         BoxHeader()
-        CardForm()
+        CardForm(viewModel)
     }
 }
 
@@ -61,13 +65,7 @@ fun BoxHeader(){
 }
 
 @Composable
-fun CardForm(){
-    var email by remember {
-        mutableStateOf("")
-    }
-    var password by remember {
-        mutableStateOf("")
-    }
+fun CardForm(viewModel: LoginViewModel){
 
     Card(
         modifier = Modifier.padding(start = 40.dp, end = 40.dp, top = 200.dp),
@@ -95,40 +93,39 @@ fun CardForm(){
             )
             DefaultTextField(
                 modifier = Modifier.padding(top = 25.dp),
-                value = email,
-                onValueChange = { email = it},
+                value = viewModel.email.value,
+                onValueChange = { viewModel.email.value = it},
                 label = "Correo electronico",
                 icon = Icons.Default.Email,
-                keyboardType = KeyboardType.Email
+                keyboardType = KeyboardType.Email,
+                errorMsg =  viewModel.emailErrMsg.value,
+                validateField = {
+                    viewModel.validateEmail()
+                }
             )
             DefaultTextField(
                 modifier = Modifier.padding(top = 5.dp),
-                value = password,
-                onValueChange = { password = it},
+                value = viewModel.password.value,
+                onValueChange = { viewModel.password.value = it},
                 label = "Contraseña",
                 icon = Icons.Default.Lock,
-                hideText = true
+                hideText = true,
+                errorMsg =  viewModel.passwordErrMsg.value,
+                validateField = {
+                    viewModel.validatePassword()
+                }
             )
             DefaultButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 40.dp),
                 text = "INICIAR SESIÓN",
-                onClick = {  }
+                onClick = {
+                    Log.d("LoginContent","Email: ${viewModel.email.value}")
+                    Log.d("LoginContent","Password: ${viewModel.password.value}")
+                },
+                enabled = viewModel.isEnabledLoginButton
             )
-        }
-    }
-}
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    BlogMVVMTheme(darkTheme = true) {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            LoginContent()
         }
     }
 }

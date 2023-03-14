@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "808873233660",
+    "project_id": "blog-mvvm-f22af",
+    "storage_bucket": "blog-mvvm-f22af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808873233660:android:ee4c2de50cdb988b6b1b79",
+        "android_client_info": {
+          "package_name": "com.juanma.blogmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808873233660-ucp4uju1mt94a8hpvatfvd5k5ouja18e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv6SIk5LrKNgfb4h4lBjrB3Z-O19WzIHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808873233660-ucp4uju1mt94a8hpvatfvd5k5ouja18e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
