@@ -1,5 +1,6 @@
 package com.juanma.blogmvvm.presentation.screens.signUp.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -21,16 +23,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.juanma.blogmvvm.R
+import com.juanma.blogmvvm.domain.model.Response
 import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
+import com.juanma.blogmvvm.presentation.navigation.AppScreen
 import com.juanma.blogmvvm.presentation.screens.signUp.SignupViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
 import com.juanma.blogmvvm.presentation.ui.theme.Red500
 
 @Composable
-fun SignupContent(viewModel: SignupViewModel = hiltViewModel()){
+fun SignupContent(navController: NavHostController, viewModel: SignupViewModel = hiltViewModel()){
+    val signupFlow = viewModel.signUpFlow.collectAsState()
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -121,9 +127,32 @@ fun SignupContent(viewModel: SignupViewModel = hiltViewModel()){
                         .fillMaxWidth()
                         .padding(vertical = 20.dp),
                     text = "REGISTRARSE",
-                    onClick = {  },
+                    onClick = { viewModel.onSignup() },
                     enabled = viewModel.isEnabledLoginButton
                 )
+            }
+        }
+    }
+    signupFlow.value.let {
+        when(it){
+            Response.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                ){
+                    CircularProgressIndicator()
+                }
+            }
+            is Response.Success -> {
+                LaunchedEffect(Unit){
+                    navController.popBackStack(AppScreen.Login.route, true)
+                    navController.navigate( route = AppScreen.Profile.route){
+                        popUpTo(AppScreen.Signup.route)
+                    }
+                }
+            }
+            is Response.Failure -> {
+                Toast.makeText(LocalContext.current, it.exception?.message ?: "Error desconocido", Toast.LENGTH_LONG).show()
             }
         }
     }
