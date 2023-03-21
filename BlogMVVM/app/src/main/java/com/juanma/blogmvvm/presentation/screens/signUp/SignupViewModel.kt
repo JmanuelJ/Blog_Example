@@ -10,6 +10,7 @@ import com.juanma.blogmvvm.domain.model.Response
 import com.juanma.blogmvvm.domain.model.User
 import com.juanma.blogmvvm.domain.repository.AuthRepository
 import com.juanma.blogmvvm.domain.use_cases.auth.AuthUseCases
+import com.juanma.blogmvvm.domain.use_cases.users.UsersUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignupViewModel @Inject constructor(private val authUseCases: AuthUseCases): ViewModel() {
+class SignupViewModel @Inject constructor(private val authUseCases: AuthUseCases, private val usersUseCases: UsersUseCases): ViewModel() {
     //User name
     var username: MutableState<String> = mutableStateOf("")
     var isUsernameValid: MutableState<Boolean> = mutableStateOf(false)
@@ -40,13 +41,18 @@ class SignupViewModel @Inject constructor(private val authUseCases: AuthUseCases
     private val _signUpFlow = MutableStateFlow<Response<FirebaseUser>?>(null)
     val signUpFlow: StateFlow<Response<FirebaseUser>?> = _signUpFlow
 
+    var user = User()
+
     fun onSignup(){
-        val user = User(
-            username = username.value,
-            email = email.value,
-            password = password.value
-        )
+        user.username= username.value
+        user.email = email.value
+        user.password = password.value
         signUp(user)
+    }
+
+    fun createUser() = viewModelScope.launch {
+        user.id = authUseCases.getCurrentUser()!!.uid
+        usersUseCases.create(user)
     }
 
     fun signUp(user: User) = viewModelScope.launch {

@@ -39,7 +39,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion '1.1.1'
     }
     packagingOptions {
         resources {
@@ -62,8 +62,13 @@ dependencies {
     //Dagger Hil
     implementation("com.google.dagger:hilt-android:2.44")
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-rc01'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     kapt('com.google.dagger:hilt-android-compiler:2.44')
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.0'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
