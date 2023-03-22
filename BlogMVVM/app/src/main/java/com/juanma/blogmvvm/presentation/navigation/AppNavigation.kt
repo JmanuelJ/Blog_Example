@@ -2,10 +2,13 @@ package com.juanma.blogmvvm.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.juanma.blogmvvm.presentation.screens.login.LoginScreen
 import com.juanma.blogmvvm.presentation.screens.profile.ProfileScreen
+import com.juanma.blogmvvm.presentation.screens.profile_edit.ProfileEditScreen
 import com.juanma.blogmvvm.presentation.screens.signUp.SignUpScreen
 
 @Composable
@@ -23,6 +26,16 @@ fun AppNavigation(navController: NavHostController){
         }
         composable(route= AppScreen.Profile.route){
             ProfileScreen(navController)
+        }
+        composable(
+            route= AppScreen.ProfileEdit.route,
+            arguments = listOf(navArgument("user"){
+                type = NavType.StringType
+            })
+        ){
+            it.arguments?.getString("user")?.let {
+                ProfileEditScreen(navController, user = it)
+            }
         }
     }
 }

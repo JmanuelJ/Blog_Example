@@ -7,6 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.juanma.blogmvvm.presentation.screens.login.components.Login
 import com.juanma.blogmvvm.presentation.screens.login.components.LoginBottomBar
 import com.juanma.blogmvvm.presentation.screens.login.components.LoginContent
 import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
@@ -22,4 +23,6 @@ fun LoginScreen(navController: NavHostController) {
             LoginBottomBar(navController)
         }
     )
+    //Manejar el estado de la peticion de login
+    Login(navController = navController)
 }

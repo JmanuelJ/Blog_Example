@@ -1,41 +1,31 @@
-package com.juanma.blogmvvm.presentation.screens.signUp.components
+package com.juanma.blogmvvm.presentation.screens.profile_edit.components
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.juanma.blogmvvm.R
-import com.juanma.blogmvvm.domain.model.Response
 import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
-import com.juanma.blogmvvm.presentation.navigation.AppScreen
-import com.juanma.blogmvvm.presentation.screens.signUp.SignupViewModel
-import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
+import com.juanma.blogmvvm.presentation.screens.profile_edit.ProfileEditViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
 import com.juanma.blogmvvm.presentation.ui.theme.Red500
 
 @Composable
-fun SignupContent(navController: NavHostController, viewModel: SignupViewModel = hiltViewModel()){
+fun ProfileEditContent(navController: NavHostController, viewModel: ProfileEditViewModel = hiltViewModel()){
 
     val state = viewModel.state
     Box(
@@ -74,7 +64,7 @@ fun SignupContent(navController: NavHostController, viewModel: SignupViewModel =
                         start = 0.dp,
                         end = 0.dp
                     ),
-                    text = "REGISTRO",
+                    text = "Actualizacion",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -93,43 +83,12 @@ fun SignupContent(navController: NavHostController, viewModel: SignupViewModel =
                     errorMsg = viewModel.usernameErrMsg,
                     validateField = {viewModel.validateUsername()}
                 )
-                DefaultTextField(
-                    modifier = Modifier.padding(top = 0.dp),
-                    value = state.email,
-                    onValueChange = { viewModel.onEmailInput(it)},
-                    label = "Correo electronico",
-                    icon = Icons.Default.Email,
-                    keyboardType = KeyboardType.Email,
-                    errorMsg = viewModel.emailErrMsg,
-                    validateField = {viewModel.validateEmail()}
-                )
-                DefaultTextField(
-                    modifier = Modifier.padding(top = 0.dp),
-                    value = state.password,
-                    onValueChange = { viewModel.onPasswordInput(it)},
-                    label = "Contraseña",
-                    icon = Icons.Default.Lock,
-                    hideText = true,
-                    errorMsg = viewModel.passwordErrMsg,
-                    validateField = {viewModel.validatePassword()}
-                )
-                DefaultTextField(
-                    modifier = Modifier.padding(top = 0.dp),
-                    value = state.confirmPassword,
-                    onValueChange = { viewModel.onConfirmPasswordInput(it)},
-                    label = "Confirmar ontraseña",
-                    icon = Icons.Outlined.Lock,
-                    hideText = true,
-                    errorMsg = viewModel.confirmPasswordErrMsg,
-                    validateField = {viewModel.validateConfirmPassword()}
-                )
                 DefaultButton(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 20.dp),
-                    text = "REGISTRARSE",
-                    onClick = { viewModel.onSignup() },
-                    enabled = viewModel.isEnabledLoginButton
+                        .padding(top = 20.dp, bottom = 40.dp),
+                    text = "Actualizar Datos",
+                    onClick = { },
                 )
             }
         }
