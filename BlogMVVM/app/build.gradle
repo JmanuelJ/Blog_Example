@@ -68,9 +68,15 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-storage-ktx'
 
     //Gson
     implementation'com.google.code.gson:gson:2.9.0'
+
+    //Async Image
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
+    implementation 'commons-io:commons-io:2.7'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

@@ -8,7 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.juanma.blogmvvm.presentation.screens.login.LoginScreen
 import com.juanma.blogmvvm.presentation.screens.profile.ProfileScreen
-import com.juanma.blogmvvm.presentation.screens.profile_edit.ProfileEditScreen
+import com.juanma.blogmvvm.presentation.screens.profile_update.ProfileEditScreen
 import com.juanma.blogmvvm.presentation.screens.signUp.SignUpScreen
 
 @Composable

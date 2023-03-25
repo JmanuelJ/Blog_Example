@@ -5,15 +5,15 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.juanma.blogmvvm.core.Constants.Users
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.juanma.blogmvvm.core.Constants.USERS
 import com.juanma.blogmvvm.data.repository.AuthRepositoryImpl
 import com.juanma.blogmvvm.data.repository.UsersRepositoryImpl
 import com.juanma.blogmvvm.domain.repository.AuthRepository
 import com.juanma.blogmvvm.domain.repository.UsersRepository
 import com.juanma.blogmvvm.domain.use_cases.auth.*
-import com.juanma.blogmvvm.domain.use_cases.users.Create
-import com.juanma.blogmvvm.domain.use_cases.users.GetUserById
-import com.juanma.blogmvvm.domain.use_cases.users.UsersUseCases
+import com.juanma.blogmvvm.domain.use_cases.users.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +27,13 @@ object AppModule {
     fun provideFirebaseFirestore(): FirebaseFirestore = Firebase.firestore
 
     @Provides
-    fun providerUserRef(db: FirebaseFirestore): CollectionReference = db.collection(Users)
+    fun providerFirebaseStorage():FirebaseStorage = FirebaseStorage.getInstance()
+
+    @Provides
+    fun provideStorageUsersRef(storage: FirebaseStorage): StorageReference =storage.reference.child(USERS)
+
+    @Provides
+    fun providerUserRef(db: FirebaseFirestore): CollectionReference = db.collection(USERS)
 
     @Provides
     fun provideFirebaseAuth():FirebaseAuth = FirebaseAuth.getInstance()
@@ -49,6 +55,8 @@ object AppModule {
     @Provides
     fun providesUsersUseCases(repository: UsersRepository) = UsersUseCases(
         create = Create(repository),
-        getUserById = GetUserById(repository)
+        getUserById = GetUserById(repository),
+        update = Update(repository),
+        saveImage = SaveImage(repository)
     )
 }

@@ -2,6 +2,7 @@ package com.juanma.blogmvvm.presentation.screens.profile.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -9,6 +10,7 @@ import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -18,11 +20,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import com.juanma.blogmvvm.R
 import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.navigation.AppScreen
 import com.juanma.blogmvvm.presentation.screens.profile.ProfileViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun ProfileContent(navController: NavHostController, viewModel: ProfileViewModel = hiltViewModel()){
@@ -52,11 +57,20 @@ fun ProfileContent(navController: NavHostController, viewModel: ProfileViewModel
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(55.dp))
-                Image(
-                    modifier = Modifier.size(115.dp),
-                    painter = painterResource(id = R.drawable.user),
-                    contentDescription = "")
-            }
+                if(viewModel.userData.image != ""){
+                    AsyncImage(
+                        modifier = Modifier.size(115.dp).clip(CircleShape),
+                        model = viewModel.userData.image,
+                        contentDescription = "User image",
+                        contentScale = ContentScale.Crop
+                    )
+                } else{
+                    Image(
+                        modifier = Modifier.size(115.dp),
+                        painter = painterResource(id = R.drawable.user),
+                        contentDescription = "")
+                }
+                }
         }
         Spacer(modifier = Modifier.height(55.dp))
         Text(
