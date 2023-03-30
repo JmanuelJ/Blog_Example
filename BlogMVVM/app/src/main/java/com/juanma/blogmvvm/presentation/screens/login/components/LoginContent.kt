@@ -1,7 +1,5 @@
 package com.juanma.blogmvvm.presentation.screens.login.components
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,27 +8,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import com.juanma.blogmvvm.R
-import com.juanma.blogmvvm.domain.model.Response
 import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
-import com.juanma.blogmvvm.presentation.navigation.AppScreen
 import com.juanma.blogmvvm.presentation.screens.login.LoginViewModel
-import com.juanma.blogmvvm.presentation.ui.theme.BlogMVVMTheme
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
 import com.juanma.blogmvvm.presentation.ui.theme.Red500
 

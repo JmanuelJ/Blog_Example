@@ -1,5 +1,7 @@
 package com.juanma.blogmvvm.presentation.screens.profile.components
 
+import android.app.Activity
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -22,15 +25,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.juanma.blogmvvm.R
+import com.juanma.blogmvvm.presentation.MainActivity
 import com.juanma.blogmvvm.presentation.components.DefaultButton
-import com.juanma.blogmvvm.presentation.navigation.AppScreen
+import com.juanma.blogmvvm.presentation.navigation.AuthScreen
+import com.juanma.blogmvvm.presentation.navigation.DetailsScreen
+import com.juanma.blogmvvm.presentation.navigation.Graph
 import com.juanma.blogmvvm.presentation.screens.profile.ProfileViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 @Composable
 fun ProfileContent(navController: NavHostController, viewModel: ProfileViewModel = hiltViewModel()){
+    val activity = LocalContext.current as? Activity
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -92,7 +96,7 @@ fun ProfileContent(navController: NavHostController, viewModel: ProfileViewModel
             icon = Icons.Default.Edit,
             onClick = {
                 navController.navigate(
-                    route= AppScreen.ProfileEdit.passUser(viewModel.userData.toJson()))
+                    route= DetailsScreen.ProfileUpdate.passUser(viewModel.userData.toJson()))
             }
         )
         Spacer(modifier = Modifier.height(10.dp))
@@ -102,9 +106,8 @@ fun ProfileContent(navController: NavHostController, viewModel: ProfileViewModel
             icon = Icons.Default.ExitToApp,
             onClick = {
                viewModel.logout()
-                navController.navigate(route = AppScreen.Login.route){
-                    popUpTo(AppScreen.Profile.route){ inclusive = true}
-                }
+                activity?.finish()
+                activity?.startActivity(Intent(activity, MainActivity::class.java))
             }
         )
     }

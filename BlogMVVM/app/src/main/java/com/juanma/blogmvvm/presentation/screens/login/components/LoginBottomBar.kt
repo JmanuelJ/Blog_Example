@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.juanma.blogmvvm.presentation.navigation.AppScreen
+import com.juanma.blogmvvm.presentation.navigation.AuthScreen
 
 @Composable
 fun LoginBottomBar(navController: NavHostController){
@@ -30,7 +30,7 @@ fun LoginBottomBar(navController: NavHostController){
         Spacer(modifier = Modifier.width(7.dp))
         Text(
             modifier = Modifier.clickable {
-                navController.navigate(route = AppScreen.Signup.route)
+                navController.navigate(route = AuthScreen.Signup.route)
             },
             text = "Registrate aqui",
             fontSize = 14.sp,
