@@ -8,11 +8,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.juanma.blogmvvm.presentation.ui.theme.Red500
-import com.juanma.blogmvvm.presentation.ui.theme.Red700
+import com.juanma.blogmvvm.presentation.ui.theme.Blue700
 
 @Composable
 fun DefaultTopBar(
@@ -27,7 +25,7 @@ fun DefaultTopBar(
                 fontSize = 19.sp
             )
         } ,
-        backgroundColor = Red500,
+        backgroundColor = Blue700,
         navigationIcon = {
             if(upAvailable){
                 IconButton(onClick = { navController?.popBackStack() }) {

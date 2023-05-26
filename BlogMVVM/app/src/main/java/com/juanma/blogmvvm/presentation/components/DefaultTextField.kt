@@ -15,7 +15,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.juanma.blogmvvm.presentation.ui.theme.Red700
+import com.juanma.blogmvvm.presentation.ui.theme.Blue100
+import com.juanma.blogmvvm.presentation.ui.theme.Blue700
 
 @Composable
 fun DefaultTextField(
@@ -45,7 +46,7 @@ fun DefaultTextField(
                 Icon(
                     imageVector = icon,
                     contentDescription = "",
-                    tint = Color.White
+                    tint = Blue100
                 )
             },
             visualTransformation = if(hideText) PasswordVisualTransformation() else VisualTransformation.None
@@ -54,7 +55,7 @@ fun DefaultTextField(
             modifier = Modifier.padding(top  = 2.dp),
             text = errorMsg,
             fontSize = 11.sp,
-            color = Red700
+            color = Blue700
         )
     }
 }

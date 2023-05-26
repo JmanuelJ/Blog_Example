@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -30,7 +31,7 @@ import com.juanma.blogmvvm.presentation.components.DefaultTextField
 import com.juanma.blogmvvm.presentation.components.DialogCapturePicture
 import com.juanma.blogmvvm.presentation.screens.profile_update.ProfileUpdateViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
-import com.juanma.blogmvvm.presentation.ui.theme.Red500
+import com.juanma.blogmvvm.presentation.ui.theme.Blue500
 
 @Composable
 fun ProfileUpdateContent(navController: NavHostController, viewModel: ProfileUpdateViewModel = hiltViewModel()){
@@ -52,7 +53,7 @@ fun ProfileUpdateContent(navController: NavHostController, viewModel: ProfileUpd
             modifier = Modifier
                 .fillMaxWidth()
                 .height(230.dp)
-                .background(Red500)
+                .background(Blue500)
         ){
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -63,8 +64,8 @@ fun ProfileUpdateContent(navController: NavHostController, viewModel: ProfileUpd
                 if( viewModel.state.image != ""){
                     AsyncImage(
                         modifier = Modifier
-                            .height(120.dp)
-                            .width(120.dp)
+                            .height(130.dp)
+                            .width(130.dp)
                             .clip(CircleShape)
                             .clickable {
                                        dialogState.value = true
@@ -89,7 +90,8 @@ fun ProfileUpdateContent(navController: NavHostController, viewModel: ProfileUpd
         }
         Card(
             modifier = Modifier.padding(start = 40.dp, end = 40.dp, top = 170.dp),
-            backgroundColor = Darkgray500
+            backgroundColor = Darkgray500,
+            shape = RoundedCornerShape(20.dp)
         ){
             Column(
                 modifier = Modifier.padding(horizontal = 20.dp)

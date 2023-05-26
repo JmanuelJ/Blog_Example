@@ -3,6 +3,7 @@ package com.juanma.blogmvvm.presentation.screens.login.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -23,7 +24,8 @@ import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
 import com.juanma.blogmvvm.presentation.screens.login.LoginViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
-import com.juanma.blogmvvm.presentation.ui.theme.Red500
+import com.juanma.blogmvvm.presentation.ui.theme.Blue500
+import com.juanma.blogmvvm.presentation.ui.theme.Blue700
 
 @Composable
 fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = hiltViewModel()){
@@ -37,7 +39,7 @@ fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = h
             modifier = Modifier
                 .fillMaxWidth()
                 .height(280.dp)
-                .background(Red500)
+                .background(Blue700)
         ){
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -49,12 +51,14 @@ fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = h
                     contentDescription = "Control de Xbox 360"
                 )
                 Text(
-                    text = "Gamer App"
+                    text = "Gamer App",
+                    fontSize = 30.sp
                 )
             }
         }
         Card(
             modifier = Modifier.padding(start = 40.dp, end = 40.dp, top = 200.dp),
+            shape = RoundedCornerShape(20.dp),
             backgroundColor = Darkgray500
         ){
             Column(
@@ -73,8 +77,8 @@ fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = h
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "Por favor inicia sesión para continuar",
-                    fontSize = 12.sp,
+                    text = "¡Hola de nuevo!",
+                    fontSize = 15.sp,
                     color = Color.Gray
                 )
                 DefaultTextField(
@@ -93,7 +97,7 @@ fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = h
                     modifier = Modifier.padding(top = 5.dp),
                     value = state.password,
                     onValueChange = { viewModel.onPasswordInput(it)},
-                    label = "Contraseña",
+                    label = "Escribe tu contraseña",
                     icon = Icons.Default.Lock,
                     hideText = true,
                     errorMsg =  viewModel.passwordErrMsg,
@@ -105,7 +109,7 @@ fun LoginContent(navController: NavHostController, viewModel: LoginViewModel = h
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 40.dp),
-                    text = "INICIAR SESIÓN",
+                    text = "Iniciar sesión",
                     onClick = {
                         viewModel.login()
                     },

@@ -25,7 +25,7 @@ import com.juanma.blogmvvm.presentation.components.DefaultButton
 import com.juanma.blogmvvm.presentation.components.DefaultTextField
 import com.juanma.blogmvvm.presentation.screens.signUp.SignupViewModel
 import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
-import com.juanma.blogmvvm.presentation.ui.theme.Red500
+import com.juanma.blogmvvm.presentation.ui.theme.Blue500
 
 @Composable
 fun SignupContent(navController: NavHostController, viewModel: SignupViewModel = hiltViewModel()){
@@ -39,7 +39,7 @@ fun SignupContent(navController: NavHostController, viewModel: SignupViewModel =
             modifier = Modifier
                 .fillMaxWidth()
                 .height(230.dp)
-                .background(Red500)
+                .background(Blue500)
         ){
             Column(
                 modifier = Modifier.fillMaxWidth(),

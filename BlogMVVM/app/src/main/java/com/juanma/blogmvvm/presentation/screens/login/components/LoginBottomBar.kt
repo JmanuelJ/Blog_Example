@@ -23,7 +23,7 @@ fun LoginBottomBar(navController: NavHostController){
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "No tienes cuenta?",
+            text = "¿No tienes cuenta?",
             fontSize = 14.sp,
             color = Color.Gray
         )
@@ -32,7 +32,7 @@ fun LoginBottomBar(navController: NavHostController){
             modifier = Modifier.clickable {
                 navController.navigate(route = AuthScreen.Signup.route)
             },
-            text = "Registrate aqui",
+            text = "Crea una aquí",
             fontSize = 14.sp,
             color = Color.Red,
             fontWeight = FontWeight.Bold

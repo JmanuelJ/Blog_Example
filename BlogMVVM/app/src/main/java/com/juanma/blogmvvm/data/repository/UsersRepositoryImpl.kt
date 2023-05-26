@@ -4,6 +4,8 @@ import android.net.Uri
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.StorageReference
+import com.juanma.blogmvvm.core.Constants
+import com.juanma.blogmvvm.core.Constants.USERS
 import com.juanma.blogmvvm.domain.model.Response
 import com.juanma.blogmvvm.domain.model.User
 import com.juanma.blogmvvm.domain.repository.UsersRepository
@@ -13,10 +15,11 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import java.io.File
 import javax.inject.Inject
+import javax.inject.Named
 
 class UsersRepositoryImpl @Inject constructor(
-    private val userRef: CollectionReference,
-    private val storageUsersRef: StorageReference
+    @Named(USERS) private val userRef: CollectionReference,
+    @Named(USERS)private val storageUsersRef: StorageReference
 ): UsersRepository {
 
     override suspend fun create(user: User): Response<Boolean> {

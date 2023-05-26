@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.juanma.blogmvvm.presentation.ui.theme.Darkgray500
 
 @Composable
 fun DialogCapturePicture(
@@ -23,7 +24,7 @@ fun DialogCapturePicture(
                 .fillMaxWidth()
                 .height(150.dp),
             onDismissRequest = { status.value = false},
-            backgroundColor = Color.White,
+            backgroundColor = Darkgray500 ,
             title = {
                 Text(
                     text ="Selecciona una opción",
