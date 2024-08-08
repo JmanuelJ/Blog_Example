@@ -1,4 +1,4 @@
-# :iphone: App: Aplicacion blog de videojuegos :construction: 
+# :iphone: App: Aplicacion blog de videojuegos :tv: :video_game: :video_game: 
 
 Aplicacion que permitira a los usuarios compartir experiencias de video juegos en las distintas plataformas existentes.
 Esta aplicacion surge como proceso de seguir un curso de Udemy con el instructor [Jonathan Goyes](udemy.com/user/jonathan-goyes) 
@@ -6,12 +6,13 @@ Esta aplicacion surge como proceso de seguir un curso de Udemy con el instructor
 
 ## Pantallas
 <div align="center">
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665304.jpg" height="250" alt="img1"  />
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665270.jpg" height="250" alt="img1"  />
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665338.jpg" height="250" alt="img1"  />
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665370.jpg" height="250" alt="img1"  />
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665404.jpg" height="250" alt="img1"  />
-  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/Firebase_example/1723072665437.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418689.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418730.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418766.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418805.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418846.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418885.jpg" height="250" alt="img1"  />
+  <img src="https://github.com/JmanuelJ/Resources-Myrepos/blob/main/BlogExample/1723073418923.jpg" height="250" alt="img1"  />
 
 </div>
 
